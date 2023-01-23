@@ -14,7 +14,7 @@ teletips=Client(
     bot_token = os.environ["BOT_TOKEN"]
 )
 
-@teletips.on_message(filters.command('start') & filters.private)
+teletip.on_message(filters.command('start') & filters.private)
 async def start(client, message):
     text = f"""
 Heya {message.from_user.mention},
@@ -25,12 +25,12 @@ Valid file types are 'jpeg', 'jpg', 'png', 'mp4' and 'gif'.
 
 To generate links in **group chats**, add me to your supergroup and send the command <code>/tl</code> as a reply to a valid media file.
 
-🏠 | [Home](https://t.me/teletipsofficialchannel)
+🏠 | [Home](https://t.me/the_chatting)
             """
     await teletips.send_message(message.chat.id, text, disable_web_page_preview=True)
     
 
-@teletips.on_message(filters.media & filters.private)
+teletip.on_message(filters.media & filters.private)
 async def get_link_private(client, message):
     try:
         text = await message.reply("Processing...")
@@ -50,7 +50,7 @@ async def get_link_private(client, message):
     except Exception:
         pass        
 
-@teletips.on_message(filters.command('tl'))
+teletip.on_message(filters.command('tl'))
 async def get_link_group(client, message):
     try:
         text = await message.reply("Processing...")
@@ -73,4 +73,4 @@ async def get_link_group(client, message):
 print("Bot is alive!")
 teletips.run()
 
-#Copyright ©️ 2022 TeLe TiPs. All Rights Reserved
+#Copyright ©️ 2023 TeLe TiP. All Rights Reserved
